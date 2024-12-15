@@ -1,7 +1,10 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const userRoutes = require('./api/user');  // ใช้เส้นทางที่ถูกต้อง
+const cors = require('cors');  // เพิ่มการ import cors
 
+
+app.use(cors());
 
 // Import the database connection
 const db = require('./db');
