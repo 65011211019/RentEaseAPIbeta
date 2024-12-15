@@ -1,9 +1,6 @@
 const express = require('express');
 const router = express.Router();
 const db = require('../db'); // อ้างอิงการเชื่อมต่อจาก db.js
-const cors = require('cors');  // เพิ่มการ import cors
-
-app.use(cors());
 
 
 // Create a new user (POST)
