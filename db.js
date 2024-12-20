@@ -6,12 +6,12 @@ const pool = mysql.createPool({
     user: 'x38kHt5rR175qKH.root',
     password: 'KEoUaI1n3KSMnVFG',
     database: 'redb',
-    port: 4000,
+    port: 4000, 
     ssl: {
         rejectUnauthorized: true // Ensure that the server certificate is verified
     },
     waitForConnections: true,
-    connectionLimit: 10, // Maximum number of connections
+    connectionLimit: 50, // Maximum number of connections
     queueLimit: 0 // Unlimited query queue
 });
 
@@ -31,3 +31,6 @@ const testConnection = async () => {
 
 // Call the test connection function
 testConnection();
+
+
+
