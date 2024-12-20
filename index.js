@@ -2,7 +2,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const userRoutes = require('./api/user');
 const categoryRoutes = require('./api/category');
-const productRoutes = require('./api/product');  // ใช้เส้นทางที่ถูกต้อง
+const productRoutes = require('./api/Product');  // ใช้เส้นทางที่ถูกต้อง
 const productImageRoutes = require('./api/ProductImage');
 const cors = require('cors');  // เพิ่มการ import cors
 
