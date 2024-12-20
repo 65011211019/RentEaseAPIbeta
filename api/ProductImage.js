@@ -6,7 +6,7 @@ const db = require('../db');  // ใช้การเชื่อมต่อ�
 const isValidNumber = (value) => !isNaN(value) && value > 0;
 
 // Create a new product image (POST)
-router.post('/', async (req, res) => {  // ใช้ '/' เพื่อให้เส้นทางตรงกับ /api/product-image
+router.post('/productimage', async (req, res) => {  // ใช้ '/' เพื่อให้เส้นทางตรงกับ /api/product-image
     const { product_image_url, product_id } = req.body;
 
     // Validate required fields
@@ -32,7 +32,7 @@ router.post('/', async (req, res) => {  // ใช้ '/' เพื่อให�
 });
 
 // Get all product images (GET)
-router.get('/', async (req, res) => {
+router.get('/productimages', async (req, res) => {
     try {
         const [results] = await db.query(`SELECT * FROM product_image`);
         res.status(200).json(results);
@@ -43,7 +43,7 @@ router.get('/', async (req, res) => {
 });
 
 // Get a product image by ID (GET)
-router.get('/:id', async (req, res) => {
+router.get('/productimage/:id', async (req, res) => {
     const { id } = req.params;
 
     // Ensure ID is a valid number
@@ -67,7 +67,7 @@ router.get('/:id', async (req, res) => {
 });
 
 // Update a product image (PUT)
-router.put('/:id', async (req, res) => {
+router.put('/productimage/:id', async (req, res) => {
     const { id } = req.params;
     const { product_image_url, product_id } = req.body;
 
@@ -99,7 +99,7 @@ router.put('/:id', async (req, res) => {
 });
 
 // Delete a product image (DELETE)
-router.delete('/:id', async (req, res) => {
+router.delete('/productimage/:id', async (req, res) => {
     const { id } = req.params;
 
     // Ensure ID is a valid number
