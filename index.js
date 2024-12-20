@@ -18,11 +18,11 @@ app.get('/', (req, res) => {
     res.send('RentEaseAPI');
 });
 
-// ใช้เส้นทาง API ที่มี prefix ชัดเจน
-app.use('/api/user', userRoutes);  // เส้นทางสำหรับ user
-app.use('/api/category', categoryRoutes);  // เส้นทางสำหรับ category
-app.use('/api/product', productRoutes);  // เส้นทางสำหรับ product
-app.use('/api/productimage', productImageRoutes);  // เส้นทางสำหรับ product-image
+// ใช้เส้นทาง API user
+app.use('/api', userRoutes);
+app.use('/api', categoryRoutes);
+app.use('/api', productRoutes);
+app.use('/api', productImageRoutes);
 
 // Start Server
 app.listen(PORT, () => {
