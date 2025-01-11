@@ -140,4 +140,27 @@ router.delete('/product/:id', async (req, res) => {
     }
 });
 
+// Get all products for a specific user (GET)
+router.get('/products/user_id/:user_id', async (req, res) => {
+    const { user_id } = req.params;
+
+    // Ensure user_id is a valid number
+    if (!isValidNumber(user_id)) {
+        return res.status(400).json({ error: 'Invalid user ID' });
+    }
+
+    try {
+        const [results] = await db.query(  // Use `db.query`
+            `SELECT * FROM product WHERE user_id = ?`,
+            [user_id]
+        );
+        res.status(200).json(results);
+    } catch (err) {
+        console.error('Error fetching products for user:', err);
+        res.status(500).json({ error: 'Failed to fetch products for this user from the database' });
+    }
+});
+
+
+
 module.exports = router;
