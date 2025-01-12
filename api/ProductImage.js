@@ -122,4 +122,26 @@ router.delete('/productimage/:id', async (req, res) => {
     }
 });
 
+router.delete('/productimage/product/:id', async (req, res) => {
+    const { id } = req.params;
+
+    if (!isValidNumber(id)) {
+        return res.status(400).json({ error: 'Invalid product ID' });
+    }
+
+    try {
+        const [results] = await db.query(
+            `DELETE FROM product_image WHERE product_id = ?`,
+            [id]
+        );
+        if (results.affectedRows === 0) {
+            return res.status(404).json({ error: 'No product images found for this product' });
+        }
+        res.status(200).json({ message: 'All product images for the product deleted successfully' });
+    } catch (err) {
+        console.error('Error deleting product images by product ID:', err);
+        res.status(500).json({ error: 'Failed to delete product images from the database' });
+    }
+});
+
 module.exports = router;
